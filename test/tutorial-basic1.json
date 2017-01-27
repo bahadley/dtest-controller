@@ -1,0 +1,23 @@
+{
+  "system_name":"Tutorial System",
+  "fault_module":"tutorial",
+  "components":
+  [
+    {
+      "id":"t0",
+      "targets":["switch-123"],
+      "active":true,
+      "operable_events":
+      [
+        {
+           "id":"0",
+           "fault":"detonate_node",
+           "a_model":"recurring",
+           "p_model":"deterministic",
+           "threshold":5,
+           "udf1":3
+        }
+      ]
+    }
+  ]
+}

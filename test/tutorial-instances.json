@@ -1,0 +1,24 @@
+{
+  "system_name":"Tutorial System",
+  "fault_module":"tutorial",
+  "components":
+  [
+    {
+      "id":"0",
+      "targets":["vm0","vm1","vm2","vm3"],
+      "active":true,
+      "operable_events":
+      [
+        {
+           "id":"0",
+           "fault":"electric_shock",
+           "instances":5,
+           "a_model":"singular",
+           "p_model":"deterministic",
+           "threshold":10,
+           "udd":{"volts":10}
+        }
+      ]
+    }
+  ]
+}

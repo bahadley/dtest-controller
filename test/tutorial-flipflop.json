@@ -1,0 +1,38 @@
+{
+  "system_name":"Tutorial System",
+  "fault_module":"tutorial",
+  "components":
+  [
+    {
+      "id":"0",
+      "targets":["vm12"],
+      "active":true,
+      "operable_events":
+      [
+        {
+           "id":"0",
+           "fault":"tranquilize",
+           "state_transition":true,
+           "a_model":"recurring",
+           "mttf":30,
+           "p_model":"normal",
+           "threshold":0,
+           "standard_deviation":10
+        }
+      ],
+      "nonoperable_events":
+      [
+        {
+           "id":"1",
+           "fault":"revive",
+           "state_transition":true,
+           "a_model":"recurring",
+           "mttf":30,
+           "p_model":"normal",
+           "threshold":5,
+           "standard_deviation":10
+        }
+      ]
+    }
+  ]
+}

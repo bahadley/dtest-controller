@@ -1,0 +1,24 @@
+{
+  "system_name":"Tutorial System",
+  "fault_module":"tutorial",
+  "components":
+  [
+    {
+      "id":"0",
+      "targets":["vm0", "vm1", "vm2", "vm3"],
+      "active":true,
+      "operable_events":
+      [
+        {
+           "id":"0",
+           "fault":"electric_shock",
+           "a_model":"recurring",
+           "p_model":"weibull",
+           "mttf":30,
+           "shape":2,
+           "threshold":30
+        }
+      ]
+    }
+  ]
+}
