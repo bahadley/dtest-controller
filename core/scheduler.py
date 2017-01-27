@@ -12,8 +12,6 @@ import logging
 import threading
 import time
 
-from eventparser import parse_fault
-from eventparser import EXECUTE_KEY
 from event import Event
 from systemundertest import SystemUnderTest
 
@@ -78,20 +76,8 @@ class Scheduler(threading.Thread):
                     )
                     continue
 
-                # Get attributes from [fault][/fault] structure in fault 
-                # function doc string.
-                func_attr_dict = parse_fault(fault)
-                if EXECUTE_KEY not in func_attr_dict:
-                    logging.info("error: %s %s '%s'" % (
-                            fault, "Missing attribute", EXECUTE_KEY
-                        )
-                    )
-                    continue
-
-                if (self._simulate or func_attr_dict[EXECUTE_KEY] == 'false'):
-                    # Either the CLI argument indicated a simulation run
-                    # or the attribute in the fault injector function 
-                    # indicated that it should not be executed.
+                if self._simulate:
+                    # CLI argument indicated a simulation run.
                     logging.info("Simulating: %s (target:%s)" % (fault.__name__, 
                                   e.select_component_target()))
                 else:

@@ -10,10 +10,6 @@ def detonate_node(*args, **kwargs):
     kwargs['target']: node to detonate
     kwargs['udf1']: amount of TNT to use (kg) 
 
-    [fault]
-      execute = true
-    [/fault]
-
     """
 
     node = kwargs['target']
@@ -31,10 +27,6 @@ def electric_shock(*args, **kwargs):
     kwargs['target']: node to shock 
     kwargs['udd']:  "volts" : voltage to be applied (V) 
 
-    [fault]
-      execute = true
-    [/fault]
-
     """
 
     node = kwargs['target']
@@ -50,10 +42,6 @@ def tranquilize(*args, **kwargs):
 
     kwargs['target']: node to tranquilize 
 
-    [fault]
-      execute = true
-    [/fault]
-
     """
 
     node = kwargs['target']
@@ -66,10 +54,6 @@ def revive(*args, **kwargs):
 
     kwargs['target']: node to revive 
 
-    [fault]
-      execute = true
-    [/fault]
-
     """
 
     node = kwargs['target']
@@ -79,10 +63,6 @@ def revive(*args, **kwargs):
 
 def nuclear_air_burst(*args, **kwargs):
     """
-
-    [fault]
-      execute = false
-    [/fault]
 
     """
     logging.info('Electromagnetic pulse in 10 seconds ...')
