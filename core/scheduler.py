@@ -12,7 +12,6 @@ import logging
 import threading
 import time
 
-from event import Event
 from systemundertest import SystemUnderTest
 
 # Subdirectory name for all event modules.
