@@ -44,7 +44,7 @@ def main():
     
     try:
         # Instantiate a Scheduler instance for each config file given at CLI.
-        schedulers = [Scheduler(f, args.s) for f in args.session_config_file]
+        schedulers = [Scheduler(f, args.r) for f in args.session_config_file]
     except IOError as err:
         # Failed to open a system config file.
         sys.stderr.write('%s: error: %s- %s\n\n' 
@@ -114,8 +114,8 @@ def get_arg_parser():
     )
 
     parser.add_argument(
-        '-s', '--simulate', action = 'store_true', default = False, 
-        dest = 's', help = "all events will be simulated"
+        '-r', '--dryrun', action = 'store_true', default = False, 
+        dest = 'r', help = "scheduled events will be reported but not executed"
     )
 
     parser.add_argument(

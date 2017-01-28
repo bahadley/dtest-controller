@@ -19,18 +19,18 @@ FAULT_PKG = 'net'
 
 class Scheduler(threading.Thread):
 
-    def __init__(self, sut_config_filename, simulate = False):
+    def __init__(self, sut_config_filename, dryrun = False):
         """ Create Scheduler object.
             sut_config_filename: filename for the JSON configuration
                 file associated with the system under test
-            simulate: if True, the event logic will not execute"""
+            dryrun: if True, the event logic will not execute"""
         self._sut = SystemUnderTest(sut_config_filename)
 
         threading.Thread.__init__(
             self, name = "%s" % self._sut.get_system_name()
         )
 
-        self._simulate = simulate
+        self._dryrun = dryrun
         self._fault_module_name = self._sut.get_fault_module_name()
         self._stop = threading.Event()
         self._function_cache = {} # cache of callable objects (faults)
@@ -75,9 +75,9 @@ class Scheduler(threading.Thread):
                     )
                     continue
 
-                if self._simulate:
+                if self._dryrun:
                     # CLI argument indicated a simulation run.
-                    logging.info("Simulating: %s (target:%s)" % (fault.__name__, 
+                    logging.info("Dry run: %s (target:%s)" % (fault.__name__, 
                                   e.select_component_target()))
                 else:
                     # Launch a worker thread to run a fault injection call.
