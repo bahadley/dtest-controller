@@ -43,7 +43,7 @@ class Event():
         self._random_time_set = False # toggle to trigger new computation
 
         # event_config is a NamedTuple defined in 
-        # SystemConfigFile.get_model_for_event().
+        # SessionConfig.get_model_for_event().
         event_config = config.get_model_for_event(self._component_id, self._id)
         self._fault = event_config.fault
         self._state_trans = event_config.state_trans
@@ -176,7 +176,7 @@ class Event():
                         randint(self._threshold, self._random_range))
                     # Compute the next window end
                     if (self._random_w_type == 
-                            SystemConfigFile.EVENT_RAND_FIXED):
+                            SessionConfig.EVENT_RAND_FIXED):
                         self._window_end = time() + self._random_range
                     else:
                         # Sliding Window.
