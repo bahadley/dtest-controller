@@ -11,19 +11,10 @@
       [
         {
            "id":"0",
-           "fault":"send_msg",
+           "fault":"receive_msg",
            "a_model":"singular",
            "p_model":"deterministic",
-           "threshold":1,
-           "udf1":"foo"
-        },
-        {
-           "id":"1",
-           "fault":"send_msg",
-           "a_model":"singular",
-           "p_model":"deterministic",
-           "threshold":1,
-           "udf1":"bar"
+           "threshold":1
         }
       ]
     }

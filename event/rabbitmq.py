@@ -23,15 +23,17 @@ def send_msg(*args, **kwargs):
 
     channel = connection.channel()
 
-    channel.queue_declare(queue='hello')
+    channel.exchange_declare(exchange='logs',
+                             type='fanout')
 
-    channel.basic_publish(exchange='',
-                          routing_key='hello',
+
+    channel.basic_publish(exchange='logs',
+                          routing_key='',
                           body=msg)
 
     connection.close()
 
-    logging.info("Message sent to '%s', body:  %d" % (node, msg))
+    logging.info("Message sent to '%s', body:  %s" % (node, msg))
 
 
 def receive_msg(*args, **kwargs):
@@ -48,14 +50,22 @@ def receive_msg(*args, **kwargs):
 
     channel = connection.channel()
 
-    channel.queue_declare(queue='hello')
+    channel.exchange_declare(exchange='logs',
+                             type='fanout')
 
-    def callback(ch, method, properties, body):
-       logging.info("Message received '%s'" % body)
+    result = channel.queue_declare(exclusive=True)
+    queue_name = result.method.queue
 
-    channel.basic_consume(callback,
-                          queue='hello',
-                          no_ack=True)
+    channel.queue_bind(exchange='logs',
+                       queue=queue_name)
+
 
     logging.info('Waiting for messages')
+    def callback(ch, method, properties, body):
+        logging.info("Message received: %r" % body)
+
+    channel.basic_consume(callback,
+                          queue=queue_name,
+                          no_ack=True)
+
     channel.start_consuming()
