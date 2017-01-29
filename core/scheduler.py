@@ -15,7 +15,7 @@ import time
 from systemundertest import SystemUnderTest
 
 # Subdirectory name for all event modules.
-FAULT_PKG = 'net'
+FAULT_PKG = 'event'
 
 class Scheduler(threading.Thread):
 
