@@ -5,7 +5,7 @@
   [
     {
       "id":"0",
-      "targets":["amqp://ben:ben@raspberrypi.local:5672/monitor"],
+      "targets":["amqp://monitor:monitor@raspberrypi.local:5672/monitor"],
       "active":true,
       "operable_events":
       [
@@ -15,7 +15,9 @@
            "a_model":"singular",
            "p_model":"deterministic",
            "threshold":1,
-           "udf1":"foo"
+           "udf1":"monitor",
+           "udf2":"etcd1.sense.tcplife",
+           "udf3":"foo"
         },
         {
            "id":"1",
@@ -23,7 +25,9 @@
            "a_model":"singular",
            "p_model":"deterministic",
            "threshold":1,
-           "udf1":"bar"
+           "udf1":"monitor",
+           "udf2":"etcd0.actuate.kill",
+           "udf3":"bar"
         }
       ]
     }
