@@ -26,7 +26,7 @@
            "p_model":"deterministic",
            "threshold":1,
            "udf1":"monitor",
-           "udf2":"etcd0.actuate.kill",
+           "udf2":"etcd0.execute.kill",
            "udf3":"bar"
         }
       ]
