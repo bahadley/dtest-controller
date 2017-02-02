@@ -2,7 +2,7 @@
 import pika
 import sys
 
-parameters = pika.URLParameters("amqp://monitor:monitor@raspberrypi.local:5672/monitor")
+parameters = pika.URLParameters("amqp://monitor:monitor@192.168.222.59:5672/monitor")
 connection = pika.BlockingConnection(parameters)
 
 channel = connection.channel()

@@ -5,7 +5,7 @@
   [
     {
       "id":"0",
-      "targets":["amqp://monitor:monitor@raspberrypi.local:5672/monitor"],
+      "targets":["amqp://monitor:monitor@192.168.222.59:5672/monitor"],
       "active":true,
       "operable_events":
       [
@@ -17,17 +17,17 @@
            "threshold":1,
            "udf1":"monitor",
            "udf2":"etcd1.sense.tcplife",
-           "udf3":"foo"
+           "udf3":"{\"duration\":20}"
         },
         {
            "id":"1",
            "fault":"send_msg",
            "a_model":"singular",
            "p_model":"deterministic",
-           "threshold":1,
+           "threshold":5,
            "udf1":"monitor",
            "udf2":"etcd0.execute.kill",
-           "udf3":"bar"
+           "udf3":"-SIGTERM"
         }
       ]
     }
