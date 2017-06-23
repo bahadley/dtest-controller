@@ -1,0 +1,23 @@
+{
+  "system_name":"Mobile group communications",
+  "fault_module":"mgc",
+  "components":
+  [
+    {
+      "id":"0",
+      "targets":["mgc -role=l"],
+      "active":true,
+      "operable_events":
+      [
+        {
+           "id":"0",
+           "fault":"kill_leader",
+           "a_model":"singular",
+           "p_model":"deterministic",
+           "threshold":10,
+           "udf1":"-TERM"
+        }
+      ]
+    }
+  ]
+}
